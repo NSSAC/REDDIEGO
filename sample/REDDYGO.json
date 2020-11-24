@@ -1,0 +1,16 @@
+{
+    "endTime" : 1209600.0,
+    "scheduleIntervals" : [
+        {
+            "endTick" : 6,
+            "timePerTick" : 600.0
+        },
+        {
+            "endTick" : 100,
+            "timePerTick" : 1800.0
+        },
+        {
+            "timePerTick" : 3600.0
+        }
+    ]
+}

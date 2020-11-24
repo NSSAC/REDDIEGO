@@ -1,0 +1,156 @@
+[
+    {
+        "name" : "REDDYGOIntegrationModule",
+        "class" : "REDDYGO_IntegrationModule",
+        "package" : "REDDYGO_IntegrationModule",
+        "priority" : "-Infinity",
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {"mode" : "preStep"}
+    },
+    {
+        "name" : "CommunicationModule",
+        "class" : "REDDYGO_ModuleWrapper",
+        "package" : "REDDYGO_ModuleWrapper",
+        "priority" : 1,
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {
+        	"values" : [
+        		"Communication",
+				["sbatch", "--wait", "comm_available.slurm"],
+				"comm_available_status.xml",
+				false,
+				false
+				]
+        	}
+    },
+    {
+        "name" : "InfrastructureModule",
+        "class" : "REDDYGO_ModuleWrapper",
+        "package" : "REDDYGO_ModuleWrapper",
+        "priority" : 2,
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {
+        	"values" : [
+        		"Infrastructure",
+        		["sbatch", "--wait", "inf_falloutlaydown.slurm"],
+        		"inf_falloutlaydown_status.xml",
+        		false,
+        		false
+        		]
+        	}
+    },
+    {
+        "name" : "BehaviorModule",
+        "class" : "REDDYGO_ModuleWrapper",
+        "package" : "REDDYGO_ModuleWrapper",
+        "priority" : 3,
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {
+        	"values" : [
+        		"Behavior",
+        		["sbatch", "--wait", "bhvr.slurm"],
+        		"bhvr_status-1.xml",
+        		false,
+        		false
+        		]
+        	}
+    },
+    {
+        "name" : "TransportationModule",
+        "class" : "REDDYGO_ModuleWrapper",
+        "package" : "REDDYGO_ModuleWrapper",
+        "priority" : 4,
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {
+        	"values" : [
+        		"Transportation",
+        		["sh", "trans_mobility.sh"],
+        		"trans_mobility_status.xml",
+        		false,
+        		false
+        		]
+        	}
+    },
+    {
+        "name" : "InfrastructureModule",
+        "class" : "REDDYGO_ModuleWrapper",
+        "package" : "REDDYGO_ModuleWrapper",
+        "priority" : 5,
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {
+        	"values" : [
+        		"Infrastructure",
+        		["sbatch", "--wait", "inf_popbyloc.slurm"],
+        		"inf_popbyloc_status.xml",
+        		false,
+        		false
+        		]
+        	}
+    },
+    {
+        "name" : "CommunicationModule",
+        "class" : "REDDYGO_ModuleWrapper",
+        "package" : "REDDYGO_ModuleWrapper",
+        "priority" : 6,
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {
+        	"values" : [
+        		"Communication",
+        		["sbatch", "--wait", "comm_clearcalls.slurm"],
+        		"comm_clearcalls_status.xml",
+        		false,
+        		false
+        		]
+        	}
+    },
+    {
+        "name" : "HealthModule",
+        "class" : "REDDYGO_ModuleWrapper",
+        "package" : "REDDYGO_ModuleWrapper",
+        "priority" : 7,
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {
+        	"values" : [
+        		"Health",
+        		["sbatch", "--wait", "hlth.slurm"],
+        		"hlth_status.xml",
+        		false,
+        		false
+        		] 
+        	}
+    },
+    {
+        "name" : "AnalysisModule",
+        "class" : "REDDYGO_ModuleWrapper",
+        "package" : "REDDYGO_ModuleWrapper",
+        "priority" : 8,
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {
+        	"values" : [
+        		"Analysis",
+        		["sbatch", "--wait", "anl.slurm"],
+        		"anl_status.xml",
+        		false,
+        		false
+        		]
+        	}
+    },
+    {
+        "name" : "REDDYGOIntegrationModule",
+        "class" : "REDDYGO_IntegrationModule",
+        "package" : "REDDYGO_IntegrationModule",
+        "priority" : "Infinity",
+        "startTick" : 0,
+        "tickIncrement" : 1,
+        "moduleData" : {"mode" : "postStep"}
+    }
+]
