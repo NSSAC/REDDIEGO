@@ -18,7 +18,7 @@ from numpy import inf
 import os, logging
 from datetime import datetime
 
-class REDDYGO:
+class REDDIEGO:
     def __init__(self, configurationDirectory):
         self.Configuration = Configuration(configurationDirectory)
         self.Database = Database(self)
@@ -64,7 +64,7 @@ class REDDYGO:
                 ]
             }
         
-        self.data = self.Configuration.loadJsonFile("REDDYGO.json", self.schema)
+        self.data = self.Configuration.loadJsonFile("REDDIEGO.json", self.schema)
         
         if not "runId" in self.data:
             #TODO CRITICAL Implement me
@@ -83,10 +83,10 @@ class REDDYGO:
             self.data["continueFromTick"] = self.data["initialTick"]
         
         if self.data["continueFromTick"] < self.data["initialTick"]:
-            sys.exit("ERROR: REDDYGO invalid continueFromTick: '" + str(self.data["continueFromTick"]) + "'.")
+            sys.exit("ERROR: REDDIEGO invalid continueFromTick: '" + str(self.data["continueFromTick"]) + "'.")
             
         if self.data["endTime"] <= 0.0:
-            sys.exit("ERROR: REDDYGO invalid endTime: '" + str(self.data["endTime"]) + "'.")
+            sys.exit("ERROR: REDDIEGO invalid endTime: '" + str(self.data["endTime"]) + "'.")
         
         currentTime = self.data["initialTime"]
         currentTick = -1
@@ -101,7 +101,7 @@ class REDDYGO:
                 item["startTick"] = currentTick + 1
                 
             if  item["startTick"] <= currentTick:
-                sys.exit("ERROR: REDDYGO overlapping schedule interval with startTick:  '" + str(item["startTick"]) + "'.")
+                sys.exit("ERROR: REDDIEGO overlapping schedule interval with startTick:  '" + str(item["startTick"]) + "'.")
                 
             if not "endTick" in item:
                 item["endTick"] = float(inf)
@@ -109,10 +109,10 @@ class REDDYGO:
                 item["endTick"] = float("inf")
                 
             if item["endTick"] < item["startTick"]:
-                sys.exit("ERROR: REDDYGO invalid schedule interval: ['" + str(item["startTick"]) + "', '" + str(item["endTick"]) + "'].")
+                sys.exit("ERROR: REDDIEGO invalid schedule interval: ['" + str(item["startTick"]) + "', '" + str(item["endTick"]) + "'].")
             
             if item["timePerTick"] <= 0.0:
-                sys.exit("ERROR: REDDYGO invalid schedule interval timePerTick: '" + str(item["timePerTick"]) + "'.")
+                sys.exit("ERROR: REDDIEGO invalid schedule interval timePerTick: '" + str(item["timePerTick"]) + "'.")
 
             if currentTick < 0:
                 maxTime = currentTime + (item["endTick"] - item["startTick"]) * item["timePerTick"]
@@ -129,10 +129,10 @@ class REDDYGO:
             self.data["scheduleIntervals"].remove(item)
             
         if currentTime < self.data["endTime"]:
-            sys.exit("ERROR: REDDYGO endTime: '" + str(self.data["endTime"]) + "' will never be reached (max time: '" + str(currentTime) + "').")
+            sys.exit("ERROR: REDDIEGO endTime: '" + str(self.data["endTime"]) + "' will never be reached (max time: '" + str(currentTime) + "').")
             
         if currentTick < self.data["continueFromTick"]:
-            sys.exit("ERROR: REDDYGO continueFromTick: '" + str(self.data["continueFromTick"]) + "' will never be reached (max tick: '" + str(currentTick) + "').")
+            sys.exit("ERROR: REDDIEGO continueFromTick: '" + str(self.data["continueFromTick"]) + "' will never be reached (max tick: '" + str(currentTick) + "').")
 
         self.Scheduler = Scheduler(self)
 

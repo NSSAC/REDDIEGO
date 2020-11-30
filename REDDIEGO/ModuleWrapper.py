@@ -16,14 +16,14 @@ import logging
 class ModuleWrapper():
     __metaclass__ = ABCMeta
     
-    def __init__(self, REDDYGO, data):
-        self.REDDYGO = REDDYGO
+    def __init__(self, REDDIEGO, data):
+        self.REDDIEGO = REDDIEGO
         self.data = data
         self.__lastRunTick = None
         self.__lastRunTime = None
 
-        # Create a child logger, to the REDDYGO logger (writing to the same log file)
-        self.logger = logging.getLogger(self.REDDYGO.__class__.__name__ + '.' + __name__)
+        # Create a child logger, to the REDDIEGO logger (writing to the same log file)
+        self.logger = logging.getLogger(self.REDDIEGO.__class__.__name__ + '.' + __name__)
         
         self._init()
     

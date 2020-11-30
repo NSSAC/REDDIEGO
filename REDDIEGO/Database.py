@@ -14,8 +14,8 @@ import psycopg2
 
 class Database:
 
-    def __init__(self, REDDYGO):
-        self.REDDYGO = REDDYGO
+    def __init__(self, REDDIEGO):
+        self.REDDIEGO = REDDIEGO
         
         self.schema = {
             "type" : "object",
@@ -35,7 +35,7 @@ class Database:
                 ]
             }
         
-        self.data = self.REDDYGO.getConfiguration().loadJsonFile("database.json", self.schema)
+        self.data = self.REDDIEGO.getConfiguration().loadJsonFile("database.json", self.schema)
         
         try:
             conn = psycopg2.connect(

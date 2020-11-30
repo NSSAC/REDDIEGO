@@ -11,13 +11,13 @@
 # END: License 
 
 from distutils.core import setup
-setup(name='REDDYGO',
+setup(name='REDDIEGO',
       version='0.0.1',
-      description='REDDYGO HPC multi-scale simulation framework',
+      description='REDDIEGO HPC multi-scale simulation framework',
       #long_description=open('README.txt').read(),
       #author='',
       #author_email='',
       #license='Artistic License 2.0'
-      url='https://github.com/NSSAC/REDDYGO',
-      packages=['REDDYGO'],
+      url='https://github.com/NSSAC/REDDIEGO',
+      packages=['REDDIEGO'],
       )

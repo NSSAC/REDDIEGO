@@ -13,12 +13,12 @@
 # END: License 
 
 import argparse
-from REDDYGO.REDDYGO import REDDYGO
+from REDDIEGO.REDDIEGO import REDDIEGO
 
-parser = argparse.ArgumentParser(description="REDDYGO multi-scale simulation framework.")
+parser = argparse.ArgumentParser(description="REDDIEGO multi-scale simulation framework.")
 parser.add_argument("directory", nargs=1, help='The directory where configuration files are located.')
 
 arguments = parser.parse_args()
-REDDYGO(arguments.directory[0]).run()
+REDDIEGO(arguments.directory[0]).run()
 
 exit

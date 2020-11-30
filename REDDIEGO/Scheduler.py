@@ -10,7 +10,7 @@
 #   http://www.apache.org/licenses/LICENSE-2.0 
 # END: License 
 
-# from REDDYGO.REDDYGO import REDDYGO
+# from REDDIEGO.REDDIEGO import REDDIEGO
 from importlib import import_module
 import sys, logging
 import numbers
@@ -25,8 +25,8 @@ def scheduleCompare(A, B):
 
 class Scheduler:
     
-    def __init__(self, REDDYGO):
-        self.REDDYGO = REDDYGO
+    def __init__(self, REDDIEGO):
+        self.REDDIEGO = REDDIEGO
         
         self.schema = {
             "type" : "array",
@@ -61,14 +61,14 @@ class Scheduler:
                 }
             }
         
-        self.data = self.REDDYGO.getConfiguration().loadJsonFile("schedule.json", self.schema)
+        self.data = self.REDDIEGO.getConfiguration().loadJsonFile("schedule.json", self.schema)
         
         self.schedule = list()
         
         priorities = set()
         
-        # Create a child logger, to the REDDYGO logger (and writing to the same log file)
-        self.logger = logging.getLogger(self.REDDYGO.__class__.__name__ + '.' + __name__)
+        # Create a child logger, to the REDDIEGO logger (and writing to the same log file)
+        self.logger = logging.getLogger(self.REDDIEGO.__class__.__name__ + '.' + __name__)
 
         for item in self.data:
             self.__addModule(item)
@@ -192,7 +192,7 @@ class Scheduler:
             Imported = import_module("." + module["class"], module["package"])
             
         Constructor = getattr(Imported, module["class"])
-        module["instance"] = Constructor(self.REDDYGO, module["moduleData"])
+        module["instance"] = Constructor(self.REDDIEGO, module["moduleData"])
         
         if not isinstance(module["priority"], numbers.Real):
             if module["priority"] == "-Infinity":

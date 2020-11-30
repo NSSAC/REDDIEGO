@@ -10,8 +10,8 @@
 #   http://www.apache.org/licenses/LICENSE-2.0 
 # END: License 
 
-from REDDYGO.ModuleWrapper import ModuleWrapper
-# from REDDYGO.REDDYGO import REDDYGO
+from REDDIEGO.ModuleWrapper import ModuleWrapper
+# from REDDIEGO.REDDIEGO import REDDIEGO
  
 
 class SampleModule(ModuleWrapper):
@@ -19,7 +19,7 @@ class SampleModule(ModuleWrapper):
     def _init(self):
         self.schema = {}
         
-        self.data = self.REDDYGO.getConfiguration().loadJsonFile("SampleModule/config.json", self.schema)
+        self.data = self.REDDIEGO.getConfiguration().loadJsonFile("SampleModule/config.json", self.schema)
         return
         
     def _start(self, startTick, startTime):
