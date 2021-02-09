@@ -11,11 +11,11 @@ This repository contains the framework to organize and run the modules involved 
 - Communication
 - Behavior
 
-The model is time-stepped with each of the above modules getting executed 0 or more times per time-step. Each module will consume and generate data that itself or other modules have generated. The data exchange goes through CSV files across modules; a module is free to use other format internally, but must track this. 
+The model is time-stepped with each of the above modules getting executed 0 or more times per time-step. Each module will consume and generate data that itself or other modules have generated. The data exchange goes through CSV files across modules; a module may use other format internally, but must track this - to the extent possible, this should be avoided. 
 
-Each module will specify the configuration (JSON format) it needs when it is invoked. The configuration will have 3 general sections:
-- parameters (e.g., time-step, output directory)
+Each module will specify the configuration (JSON format) that it needs when invoked. The configuration will have 3 general sections:
+- parameters (including the time-step, the output directory, module-specific parameters that may enter a statistical design)
 - an input file section
 - and output file section
 
-The input and output sections also serves to specify the staging that REDDIE-GO will conduct 
+The input and output sections also serve to specify the staging that REDDIE-GO will conduct when invoking the modules. 
