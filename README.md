@@ -15,7 +15,7 @@ The overall model is time-stepped with each of the above modules getting execute
 
 ## Data staging and data exchange between modules
 
-Each instance of REDDIE-Go will have a run_id, and will use a storage diretory hierarchy like this:
+Each instance of REDDIE-Go will have a run_id, and will use a storage directory hierarchy like this:
 
 ```
 run_id/base/ (would be read-only)
@@ -31,6 +31,11 @@ run_id/base/ (would be read-only)
 - The REDDIE-Go staging module will at the start of the simulation copy all base files to the tick_0 directory. 
 - Modules may access the directories tick_i. All files in in tick_i for i < current_tick are read_only. 
 
+There may be one or more common files. One of these files will be household.csv. Module owner will in collaboration specify the variable/column names and their data types of each common file, and will then provide boot-strapped version(s) of this/these file(s) to be used in base/. At a later stage, this step may become automated. This/these files will mimic a database table where fields are queried and updated as the modules are executed.
+
+Each common, dynamic file (e.g. household.csv) will minimally have columns run_id and tick, both of which will be updated by the REDDIE-Go framework. 
+
+## Module configuratin files
 
 
 Each module will specify the configuration (JSON format) that it needs when invoked. The configuration will have 3 general sections:
