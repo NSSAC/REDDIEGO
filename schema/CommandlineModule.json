@@ -17,16 +17,20 @@
       }
     },
     "environment": {
-      "type":"array",
+      "type": "array",
       "items": {
-        "type":"object",
+        "type": "object",
         "required": [
           "name",
           "value"
         ],
         "properties": {
-          "name": {"type": "string"},
-          "value": {"type": "string"}
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
         }
       }
     }

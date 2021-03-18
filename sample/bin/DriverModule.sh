@@ -76,9 +76,9 @@ case $mode in
     start)
         case $processMode in
             pre) 
-                ln -s ${REDDIEGO_ConfigurationDirectory} config
+                ln -s ${REDDIEGO_ConfigurationDirectory}/base base
                 mkdir tick_$startTick
-                cp config/base/dynamic/* tick_$startTick
+                cp base/dynamic/* tick_$startTick
                 ;;
             post)
                 ;;
@@ -89,7 +89,7 @@ case $mode in
             pre) 
                 chmod -R a-w tick_$currentTick
                 mkdir tick_$targetTick
-                cp config/base/dynamic/* tick_$targetTick
+                cp base/dynamic/* tick_$targetTick
                 ;;
             post)
                 ;;
