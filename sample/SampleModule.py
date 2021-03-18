@@ -1,5 +1,5 @@
 # BEGIN: Copyright 
-# Copyright (C) 2020 Rector and Visitors of the University of Virginia 
+# Copyright (C) 2020 - 2021 Rector and Visitors of the University of Virginia 
 # All rights reserved 
 # END: Copyright 
 
@@ -11,7 +11,7 @@
 # END: License 
 
 from REDDIEGO.ModuleWrapper import ModuleWrapper
-# from REDDIEGO.REDDIEGO import REDDIEGO
+from REDDIEGO.REDDIEGO import REDDIEGO
  
 
 class SampleModule(ModuleWrapper):
@@ -23,11 +23,14 @@ class SampleModule(ModuleWrapper):
         return
         
     def _start(self, startTick, startTime):
+        # Implement startup procedure, this is the first call to the module
         return True
         
     def _step(self, lastRunTick, lastRunTime, currentTick, currentTime, targetTick, targetTime):
+        # Implement simulation step, this is called for every tick
         return True
         
     def _end(self, lastRunTick, lastRunTime, endTick, endTime):
+        # Implement shutdown procedure, this is the last call to the module
         return True
         

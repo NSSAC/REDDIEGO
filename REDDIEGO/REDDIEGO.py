@@ -1,5 +1,5 @@
 # BEGIN: Copyright 
-# Copyright (C) 2020 Rector and Visitors of the University of Virginia 
+# Copyright (C) 2020 - 2021 Rector and Visitors of the University of Virginia 
 # All rights reserved 
 # END: Copyright 
 
@@ -11,17 +11,17 @@
 # END: License 
 
 import sys
-from Configuration import Configuration
-from Database import Database
-from Scheduler import Scheduler
+from REDDIEGO import Configuration
+from REDDIEGO import Database
+from REDDIEGO import Scheduler
 from numpy import inf
 import os, logging
 from datetime import datetime
 
 class REDDIEGO:
     def __init__(self, configurationDirectory):
-        self.Configuration = Configuration(configurationDirectory)
-        self.Database = Database(self)
+        self.Configuration = Configuration.Configuration(configurationDirectory)
+        self.Database = Database.Database(self)
                 
         self.schema = {
             "type" : "object",
@@ -134,7 +134,7 @@ class REDDIEGO:
         if currentTick < self.data["continueFromTick"]:
             sys.exit("ERROR: REDDIEGO continueFromTick: '" + str(self.data["continueFromTick"]) + "' will never be reached (max tick: '" + str(currentTick) + "').")
 
-        self.Scheduler = Scheduler(self)
+        self.Scheduler = Scheduler.Scheduler(self)
 
         logging.basicConfig(filename = __name__ + ".log")
         

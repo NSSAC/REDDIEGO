@@ -1,5 +1,5 @@
 # BEGIN: Copyright 
-# Copyright (C) 2020 Rector and Visitors of the University of Virginia 
+# Copyright (C) 2020 - 2021 Rector and Visitors of the University of Virginia 
 # All rights reserved 
 # END: Copyright 
 
@@ -14,6 +14,7 @@
 from importlib import import_module
 import sys, logging
 import numbers
+from functools import cmp_to_key
 
 def scheduleCompare(A, B):
     if A["tick"] != B["tick"]:
@@ -110,7 +111,7 @@ class Scheduler:
         for item in self.data:
             self.schedule.append({"tick" : item["startTick"], "priority" : item["priority"], "moduleData" : item})
 
-        self.schedule.sort(scheduleCompare)
+        self.schedule.sort(key=cmp_to_key(scheduleCompare))
          
         return success
         
@@ -151,7 +152,7 @@ class Scheduler:
         for item in toBeRemoved:
             self.schedule.remove(item)
         
-        self.schedule.sort(scheduleCompare)
+        self.schedule.sort(key=cmp_to_key(scheduleCompare))
         
         return success
         
