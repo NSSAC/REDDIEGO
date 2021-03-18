@@ -1,5 +1,5 @@
 {
-    "executable": "/raid/shoops/git/REDDIEGO/sample/CommandLine.sh",
+    "executable": "/raid/shoops/git/REDDIEGO/sample/bin/CommandLine.sh",
     "arguments": [
         "30"
     ],

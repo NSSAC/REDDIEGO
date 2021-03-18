@@ -16,11 +16,11 @@ import time
 import subprocess
 from pathlib import Path
 
-from REDDIEGO.ModuleWrapper import ModuleWrapper
+from REDDIEGO.AbstractModule import AbstractModule
 from REDDIEGO.REDDIEGO import REDDIEGO
  
 
-class CommandlineModule(ModuleWrapper):
+class CommandlineModule(AbstractModule):
     
     def _init(self):
         self.schema = {
@@ -73,7 +73,7 @@ class CommandlineModule(ModuleWrapper):
             self.command.append(argument)
 
         # Create environment
-        self.env = os.environ
+        self.env = os.environ.copy()
 
         for item in self.data['environment']:
             self.env[item['name']] = item['value']
@@ -152,7 +152,7 @@ class CommandlineModule(ModuleWrapper):
 
         # Assure that the writing has completed
         time.sleep(1)
-        Status = Path(statusFile).open().read().lower()
+        Status = Path(statusFile).open().read().strip().lower()
 
         return Status == "success"
 

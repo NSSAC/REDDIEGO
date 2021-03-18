@@ -67,12 +67,18 @@ class REDDIEGO:
         self.data = self.Configuration.loadJsonFile("REDDIEGO.json", self.schema)
         
         if not "runId" in self.data:
-            #TODO CRITICAL Implement me
             self.data["runId"] = datetime.now().strftime("%Y%m%d%H%M%S.") + str(os.getpid())
 
+        os.mkdir(self.data["runId"])
+        os.chdir(self.data["runId"])
+
         if not "cellId" in self.data:
-            self.data["cellId"] = 0
-            
+            self.data["cellId"] = ''
+        
+        if self.data["cellId"] != '':
+            os.mkdir(self.data["cellId"])
+            os.chdir(self.data["cellId"])
+
         if not "initialTick" in self.data:
             self.data["initialTick"] = 0
             
@@ -120,7 +126,7 @@ class REDDIEGO:
                 maxTime = currentTime + (item["endTick"] - item["startTick"] + 1) * item["timePerTick"]
             
             if maxTime > self.data["endTime"]:
-                item["endTick"] = item["startTick"] + (self.data["endTime"] - currentTime) / item["timePerTick"] - 1
+                item["endTick"] = item["startTick"] + (self.data["endTime"] - currentTime) / item["timePerTick"]
                 
             currentTime = maxTime
             currentTick += item["endTick"] - item["startTick"] + 1
@@ -136,7 +142,8 @@ class REDDIEGO:
 
         self.Scheduler = Scheduler.Scheduler(self)
 
-        logging.basicConfig(filename = __name__ + ".log")
+
+        logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s', filename = 'REDDIEGO.log')
         
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(10)

@@ -1,5 +1,5 @@
 # BEGIN: Copyright 
-# Copyright (C) 2020 Rector and Visitors of the University of Virginia 
+# Copyright (C) 2021 Rector and Visitors of the University of Virginia 
 # All rights reserved 
 # END: Copyright 
 
@@ -13,7 +13,7 @@
 from abc import ABCMeta, abstractmethod
 import logging
 
-class ModuleWrapper():
+class AbstractModule():
     __metaclass__ = ABCMeta
     
     def __init__(self, REDDIEGO, data):

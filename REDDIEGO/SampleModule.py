@@ -1,5 +1,5 @@
 # BEGIN: Copyright 
-# Copyright (C) 2020 - 2021 Rector and Visitors of the University of Virginia 
+# Copyright (C) 2021 Rector and Visitors of the University of Virginia 
 # All rights reserved 
 # END: Copyright 
 
@@ -10,11 +10,11 @@
 #   http://www.apache.org/licenses/LICENSE-2.0 
 # END: License 
 
-from REDDIEGO.ModuleWrapper import ModuleWrapper
+from REDDIEGO.AbstractModule import AbstractModule
 from REDDIEGO.REDDIEGO import REDDIEGO
  
 
-class SampleModule(ModuleWrapper):
+class SampleModule(AbstractModule):
     
     def _init(self):
         self.schema = {}

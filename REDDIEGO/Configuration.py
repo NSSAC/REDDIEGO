@@ -1,5 +1,5 @@
 # BEGIN: Copyright 
-# Copyright (C) 2020 Rector and Visitors of the University of Virginia 
+# Copyright (C) 2020 - 2021 Rector and Visitors of the University of Virginia 
 # All rights reserved 
 # END: Copyright 
 
@@ -19,7 +19,8 @@ class Configuration:
     
     def __init__(self, configurationDirectory):
         self.configurationDirectory = configurationDirectory
-        
+        os.environ['REDDIEGO_ConfigurationDirectory'] = configurationDirectory
+
     def loadJsonFile(self, fileName, schema = None):
     
         try:
