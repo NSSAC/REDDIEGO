@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # BEGIN: Copyright 
 # Copyright (C) 2021 Rector and Visitors of the University of Virginia 
