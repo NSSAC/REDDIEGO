@@ -12,7 +12,7 @@
 
 import sys
 from REDDIEGO import Configuration
-from REDDIEGO import Database
+# from REDDIEGO import Database
 from REDDIEGO import Scheduler
 from numpy import inf
 import os, logging
@@ -21,7 +21,7 @@ from datetime import datetime
 class REDDIEGO:
     def __init__(self, configurationDirectory):
         self.Configuration = Configuration.Configuration(configurationDirectory)
-        self.Database = Database.Database(self)
+        # self.Database = Database.Database(self)
                 
         self.schema = {
             "type" : "object",
@@ -162,8 +162,8 @@ class REDDIEGO:
     def getConfiguration(self):
         return self.Configuration
     
-    def getDatabase(self):
-        return self.Database
+    # def getDatabase(self):
+    #     return self.Database
     
     def getRunId(self):
         return self.data["runId"]
