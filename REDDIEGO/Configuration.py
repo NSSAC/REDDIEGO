@@ -18,8 +18,8 @@ from jsonschema import validate
 class Configuration:
     
     def __init__(self, configurationDirectory):
-        self.configurationDirectory = configurationDirectory
-        os.environ['REDDIEGO_ConfigurationDirectory'] = configurationDirectory
+        self.configurationDirectory = os.path.abspath(configurationDirectory)
+        os.environ['REDDIEGO_ConfigurationDirectory'] = self.configurationDirectory
 
     def loadJsonFile(self, fileName, schema = None):
     
